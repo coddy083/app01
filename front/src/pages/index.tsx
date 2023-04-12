@@ -13,12 +13,12 @@ export async function getServerSideProps() {
   };
 }
 
-export default function Home() {
-  const { data } = useQuery("posts", () =>
-    fetch("http://10.7.3.4:9000/user/posts").then((res) => res.json())
-  );
+export default function Home({ data }: any) {
+  // const { data } = useQuery("posts", () =>
+  //   fetch("http://10.7.3.4:9000/user/posts").then((res) => res.json())
+  // );
 
-  console.log(data);
+  // console.log(data);
 
   return (
     <>
