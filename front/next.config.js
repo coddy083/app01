@@ -6,6 +6,7 @@ const nextConfig = {
     return config;
   },
   pageExtensions: ["tsx"],
+  pagesDir: "src/pages",
 };
 
 module.exports = nextConfig;
