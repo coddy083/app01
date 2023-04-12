@@ -28,6 +28,7 @@ router.get("/", (req, res) => {
 });
 
 router.get("/posts", (req, res) => {
+  console.log("posts");
   res.send(posts);
 });
 
