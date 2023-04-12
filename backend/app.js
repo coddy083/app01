@@ -5,7 +5,7 @@ const port = 9000;
 
 app.use(
   cors({
-    origin: "http://localhost:3000",
+    origin: "http://localhost:4000",
   })
 );
 
@@ -16,5 +16,5 @@ app.get("/", (req, res) => {
 });
 
 app.listen(port, () => {
-  console.log("Example app listening on port 3000!");
+  console.log(`Example app listening on port ${port}!`);
 });
