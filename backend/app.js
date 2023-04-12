@@ -7,6 +7,7 @@ const allowedOrigins = [
   "http://localhost:3000",
   "http://localhost:4000",
   "http://49.247.47.141:4000",
+  "http://127.0.0.1:4000",
 ];
 
 app.use(
