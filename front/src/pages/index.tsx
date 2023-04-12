@@ -1,8 +1,23 @@
 import Head from "next/head";
 import styles from "@/styles/Home.module.css";
 import { useQuery } from "react-query";
+import { useEffect, useState } from "react";
 
-// export async function getServerSideProps() {
+// export async function getStaticProps() {
+//   const category = await fetch("http://127.0.0.1:9999/api/category");
+//   const categoryData = await category.json();
+//   const subCategory = await fetch("http://127.0.0.1:9999/api/sub_category");
+//   const subCategoryData = await subCategory.json();
+
+//   return {
+//     props: {
+//       categoryData,
+//       subCategoryData,
+//     },
+//   };
+// }
+
+// export async function getStaticProps() {
 //   const res = await fetch("http://10.7.3.4:9000/user/posts");
 //   const data = await res.json();
 
@@ -13,23 +28,12 @@ import { useQuery } from "react-query";
 //   };
 // }
 
-export async function getStaticProps() {
-  const res = await fetch("http://10.7.3.4:9000/user/posts");
-  const data = await res.json();
-
-  return {
-    props: {
-      data,
-    },
-  };
-}
-
-export default function Home({ data }: any) {
-  // const { data } = useQuery("posts", () =>
-  //   fetch("http://10.7.3.4:9000/user/posts").then((res) => res.json())
-  // );
-
-  // console.log(data);
+export default function Home() {
+  const { data: categoryData } = useQuery("category", async () => {
+    const res = await fetch("http://10.7.3.4:9000/user/posts");
+    const data = await res.json();
+    return data;
+  });
 
   return (
     <>
@@ -42,10 +46,9 @@ export default function Home({ data }: any) {
 
       {/* 더미 데이터 */}
       <div className={styles.container}>
-        {data?.map((post: any) => (
-          <div key={post.id}>
-            <h1>{post.title}</h1>
-            <p>{post.description}</p>
+        {categoryData?.map((category: any) => (
+          <div key={category._id}>
+            <h1>{category.name}</h1>
           </div>
         ))}
       </div>
