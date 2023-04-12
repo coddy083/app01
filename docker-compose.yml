@@ -1,0 +1,29 @@
+version: "3.8"
+
+services:
+  front:
+    build: ./front
+    ports:
+      - 4000:4000
+    volumes:
+      - .:/front
+      - /front/node_modules
+      - /front/.next
+    working_dir: /front
+    env_file:
+      - .env
+    command: yarn start
+    restart: always
+
+  backend:
+    build: ./backend
+    ports:
+      - 9000:9000
+    volumes:
+      - .:/backend
+      - /backend/node_modules
+    working_dir: /backend
+    env_file:
+      - .env
+    command: yarn start
+    restart: always
