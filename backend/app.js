@@ -1,6 +1,13 @@
 const app = require("express")();
+const cors = require("cors");
 const user = require("./route/user");
 const port = 9000;
+
+app.use(
+  cors({
+    origin: "http://localhost:3000",
+  })
+);
 
 app.use("/user", user);
 

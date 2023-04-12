@@ -1,7 +1,16 @@
 import Head from "next/head";
 import styles from "@/styles/Home.module.css";
+import { useQuery } from "react-query";
 
 export default function Home() {
+  const { data, isLoading, isError } = useQuery("posts", () =>
+    fetch("http://localhost:9000/user/posts").then((res) => res.json())
+  );
+
+  if (isLoading) return <div>Loading...</div>;
+
+  if (isError) return <div>Error...</div>;
+
   return (
     <>
       <Head>
@@ -10,23 +19,15 @@ export default function Home() {
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
+
       {/* 더미 데이터 */}
       <div className={styles.container}>
-        <h1 className={styles.title}>
-          Welcome to <a href="https://nextjs.org">Next.js!</a>
-        </h1>
-        <div className={styles.card}>
-          <h3>My First Post</h3>
-          <p>Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
-        </div>
-        <div className={styles.card}>
-          <h3>My Second Post</h3>
-          <p>Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
-        </div>
-        <div className={styles.card}>
-          <h3>My Third Post</h3>
-          <p>Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
-        </div>
+        {data?.map((post: any) => (
+          <div key={post.id}>
+            <h1>{post.title}</h1>
+            <p>{post.description}</p>
+          </div>
+        ))}
       </div>
     </>
   );
