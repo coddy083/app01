@@ -18,6 +18,8 @@ export default function Home() {
     fetch("http://10.7.3.4:9000/user/posts").then((res) => res.json())
   );
 
+  console.log(data);
+
   return (
     <>
       <Head>
