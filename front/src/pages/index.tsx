@@ -13,14 +13,10 @@ export async function getServerSideProps() {
   };
 }
 
-export default function Home({ data }: any) {
-  // const { data, isLoading, isError } = useQuery("posts", () =>
-  //   fetch("http://127.0.0.1:9000/user/posts").then((res) => res.json())
-  // );
-
-  // if (isLoading) return <div>Loading...</div>;
-
-  // if (isError) return <div>Error...</div>;
+export default function Home() {
+  const { data } = useQuery("posts", () =>
+    fetch("http://10.7.3.4:9000/user/posts").then((res) => res.json())
+  );
 
   return (
     <>
