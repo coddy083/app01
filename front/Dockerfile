@@ -7,12 +7,12 @@ WORKDIR /front
 
 # Install app dependencies
 COPY package*.json /front/
+COPY . /front
 
 RUN yarn install
 RUN yarn build
 
 # Bundle app source
-COPY . /front
 
 EXPOSE 4000
 CMD [ "yarn", "start" ]
