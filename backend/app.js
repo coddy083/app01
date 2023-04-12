@@ -5,7 +5,7 @@ const port = 9000;
 
 app.use(
   cors({
-    origin: "http://localhost:4000",
+    origin: ["http://localhost:3000", "http://49.247.47.141:4000"],
   })
 );
 
