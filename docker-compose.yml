@@ -6,7 +6,7 @@ services:
     ports:
       - 4000:4000
     volumes:
-      - .:/front
+      - ./front:/front
       - /front/node_modules
       - /front/.next
     working_dir: /front
@@ -18,7 +18,7 @@ services:
     ports:
       - 9000:9000
     volumes:
-      - .:/backend
+      - ./backend:/backend
       - /backend/node_modules
     working_dir: /backend
     command: yarn start
