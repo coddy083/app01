@@ -15,7 +15,7 @@ import { useQuery } from "react-query";
 
 export default function Home() {
   const { data, isLoading, isError } = useQuery("posts", () =>
-    fetch("http://localhost:9000/user/posts").then((res) => res.json())
+    fetch("http://127.0.0.1:9000/user/posts").then((res) => res.json())
   );
 
   if (isLoading) return <div>Loading...</div>;
