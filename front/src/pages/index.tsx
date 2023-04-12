@@ -2,14 +2,25 @@ import Head from "next/head";
 import styles from "@/styles/Home.module.css";
 import { useQuery } from "react-query";
 
-export default function Home() {
-  const { data, isLoading, isError } = useQuery("posts", () =>
-    fetch("http://localhost:9000/user/posts").then((res) => res.json())
-  );
+export async function getStaticProps() {
+  const res = await fetch("http://localhost:9000/user/posts");
+  const data = await res.json();
 
-  if (isLoading) return <div>Loading...</div>;
+  return {
+    props: {
+      data,
+    },
+  };
+}
 
-  if (isError) return <div>Error...</div>;
+export default function Home({ data }: any) {
+  // const { data, isLoading, isError } = useQuery("posts", () =>
+  //   fetch("http://localhost:9000/user/posts").then((res) => res.json())
+  // );
+
+  // if (isLoading) return <div>Loading...</div>;
+
+  // if (isError) return <div>Error...</div>;
 
   return (
     <>
