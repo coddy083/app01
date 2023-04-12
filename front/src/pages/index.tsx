@@ -2,7 +2,18 @@ import Head from "next/head";
 import styles from "@/styles/Home.module.css";
 import { useQuery } from "react-query";
 
-export async function getServerSideProps() {
+// export async function getServerSideProps() {
+//   const res = await fetch("http://10.7.3.4:9000/user/posts");
+//   const data = await res.json();
+
+//   return {
+//     props: {
+//       data,
+//     },
+//   };
+// }
+
+export async function getStaticProps() {
   const res = await fetch("http://10.7.3.4:9000/user/posts");
   const data = await res.json();
 
